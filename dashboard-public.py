@@ -21,7 +21,7 @@ def main():
     os.system("git config --global user.name 'joey-van-alphen2'")
     os.system("git config --global user.email 'joey.van.alphen@hva.nl'")
 
-    st.title('Verwarming en warm water verbruik')
+    st.title('Verwarming en warm tap water verbruik')
     df1 = pd.read_csv('df1.csv')
     
 #   Data invullen door gebruiker
@@ -57,7 +57,7 @@ def main():
     df_week_show = df1.tail(7)
     df_week_show_st = df_week_show[['Datum', 'Verwarming', 'Water', 'GJ', 'm3']]
     df_week_show_st.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Tap Water', 'Verbruik Stadsverwarming in GJ', 'Verbruik Tap Water in m3']
-    df_week = df1.groupby('Week')[['GJ','m3']].sum().reset_index()
+    df_week = df1.groupby('Week')[['GJ','m3']].sum().reset_index().tail(10)
     df_month = df1.groupby('Maand')[['GJ','m3']].sum().reset_index()
     df_year = df1.groupby('Jaar')[['GJ','m3']].sum().reset_index()
 
