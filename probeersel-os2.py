@@ -32,7 +32,7 @@ def main():
 
         
 	st.title('Verwarming en Water verbruik')
-	df1 = pd.read_csv(csv_path)
+	df1 = pd.read_csv('df1.csv')
     
 	st.sidebar.header('Verbruik per datum')
 	with st.sidebar.form(key='df1', clear_on_submit=True):
