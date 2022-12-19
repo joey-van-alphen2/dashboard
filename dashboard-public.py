@@ -150,7 +150,7 @@ def main():
 
 #   kpi's waardes meegeven
     kpi1.metric(
-        label="Totaal verbruik (GJ) 🔥",
+        label="Totaal verbruik 🔥",
         value=f'{round(df1.GJ.sum(), 2)} GJ')
 
     kpi2.metric(
@@ -158,7 +158,7 @@ def main():
         value=f'€ {round((df1.GJ.sum()*47.38), 2)}')
 
     kpi3.metric(
-        label="Totaal verbruik (m3) 💧",
+        label="Totaal verbruik 💧",
         value= f'{round((df1.m3.sum()), 2)} m3')
     
     kpi4.metric(
