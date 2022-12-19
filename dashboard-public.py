@@ -192,7 +192,7 @@ def main():
     kpi4.metric(
         label=f"Kosten op {(df1['Datum'].iloc[-1]).strftime('%d-%m-%Y')}",
         value=f'€ {round(((df1.GJ.iloc[-1])*47.38), 2)}',
-        delta=round(((df1['GJ'].iloc[-1])*47.38)-((df1.GJ.mean())*9.92),2),
+        delta=round(((df1['GJ'].iloc[-1])*47.38)-((df1.GJ.mean())*47.38),2),
         delta_color='inverse')
     
     st.plotly_chart(fig1) 
@@ -203,7 +203,7 @@ def main():
 
     kpi1.metric(
         label="Gemiddeld verbruik per dag",
-        value= f'{round((df1.m3.mean()), 2)} GJ')
+        value= f'{round((df1.m3.mean()), 2)} m3')
 
     kpi2.metric(
         label="Gemiddelde kosten per dag",
