@@ -46,8 +46,11 @@ def main():
 #   Datum bruikbaar maken
     df1['Datum'] = pd.to_datetime(df1['Datum'], format='%Y-%m-%d')
 #   Verbruik uitrekenen
-    df1['GJ'] = df1.Verwarming.diff().fillna(0)
-    df1['m3'] = df1.Water.diff().fillna(0)
+    df1['GJ'] = df1.Verwarming.diff()
+    df1['m3'] = df1.Water.diff()
+#   na-waardes vullen met gemiddelde
+    df1.GJ.fillna(df1.GJ.mean(), inplace=True)
+    df1.m3.fillna(df1.m3.mean(), inplace=True)
 #   Datum splitsen
     df1['Jaar'] = df1.Datum.dt.year
     df1['Maand'] = df1.Datum.dt.strftime('%B')
