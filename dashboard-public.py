@@ -28,7 +28,8 @@ def main():
     st.sidebar.header('Verbruik per datum')
     with st.sidebar.form(key='df1', clear_on_submit=True):
         add_col1 = st.date_input("Datum")
-        add_col2 = st.number_input('Verwarming', min_value=0000.00, step=0000.01, value=df1['Verwarming'].iloc[-1], format='%f')
+        #add_col2 = st.number_input('Verwarming', min_value=0000.00, step=0000.01, value=df1['Verwarming'].iloc[-1], format='%f')
+        add_col2 = st.number_input('Verwarming', min_value=df1['Verwarming'].iloc[-1], step=0.05, value=df1['Verwarming'].iloc[-1], format='%f')
         add_col3 = st.number_input('Water', min_value=000.0, step=000.1, value=df1['Water'].iloc[-1], format='%f')
         submit = st.form_submit_button('Submit')
         if submit:
