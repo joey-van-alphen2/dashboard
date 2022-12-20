@@ -48,9 +48,7 @@ def main():
 #   Verbruik uitrekenen
     df1['GJ'] = df1.Verwarming.diff()
     df1['m3'] = df1.Water.diff()
-#   na-waardes vullen met gemiddelde
-    #df1.GJ.fillna(df1.GJ.mean(), inplace=True)
-    #df1.m3.fillna(df1.m3.mean(), inplace=True)
+#   nul-meting verwijderen zodat gemiddelde klopt
     df1 = df1.iloc[1:]
 #   Datum splitsen
     df1['Jaar'] = df1.Datum.dt.year
