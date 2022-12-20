@@ -89,7 +89,7 @@ def main():
         go.Scatter(x=df_temp['Week'],
                    y=df_temp['Temperatuur'], text=df_temp['Temperatuur'], 
                    name='Temperatuur', mode='lines+markers+text', textposition='top center',
-                   marker={'size': 8}, marker_color='rgb(124, 196, 139)'), visible=False), secondary_y=True,)
+                   marker={'size': 8}, marker_color='rgb(124, 196, 139)', visible=False), secondary_y=True,)
     fig1.add_trace(
         go.Bar(x=df_month['Maand'], marker={'color': 'rgb(104, 92, 148)'},
                    y=df_month['GJ'],visible=False, width=0.5))
