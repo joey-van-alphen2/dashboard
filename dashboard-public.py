@@ -49,8 +49,9 @@ def main():
     df1['GJ'] = df1.Verwarming.diff()
     df1['m3'] = df1.Water.diff()
 #   na-waardes vullen met gemiddelde
-    df1.GJ.fillna(df1.GJ.mean(), inplace=True)
-    df1.m3.fillna(df1.m3.mean(), inplace=True)
+    #df1.GJ.fillna(df1.GJ.mean(), inplace=True)
+    #df1.m3.fillna(df1.m3.mean(), inplace=True)
+    df1 = df1.iloc[1:]
 #   Datum splitsen
     df1['Jaar'] = df1.Datum.dt.year
     df1['Maand'] = df1.Datum.dt.strftime('%B')
@@ -102,7 +103,7 @@ def main():
                          method="update",
                          args=[{"visible": [False, False, False, True]}])
 
-                ]))])  
+                ]))], dragmode='pan')  
     
     fig1.update_yaxes(title_text="Verbruik in GJ")
     
@@ -144,7 +145,7 @@ def main():
                          method="update",
                          args=[{"visible": [False, False, False, True]}])
 
-                ]))])  
+                ]))], dragmode='pan')  
         
     fig2.update_yaxes(title_text="Verbruik in m3")
         
