@@ -96,7 +96,7 @@ def main():
                    y=df_month['GJ'],visible=False, width=0.5))
     fig1.add_trace(
         go.Bar(x=df_year['Jaar'], marker={'color': 'rgb(104, 92, 148)'},
-                   y=df_year['GJ'],visible=False))
+                   y=df_year['GJ'], width=0.5, visible=False))
 
     fig1.update_layout(
         updatemenus=[
