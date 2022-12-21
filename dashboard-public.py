@@ -130,11 +130,11 @@ def main():
     fig2 = go.Figure()
 
     fig2.add_trace(
-        go.Bar(x=df_week['Week'], marker={'color': 'rgb(104, 92, 148)'}, 
-                   y=df_week['m3'], texttemplate="%{y}", width=0.5, visible=True))
-    fig2.add_trace(
         go.Bar(x=df_week_show['Dag'], marker={'color': 'rgb(104, 92, 148)'},
-                   y=df_week_show['m3'], texttemplate="%{y}", width=0.5, visible=False))
+                   y=df_week_show['m3'], texttemplate="%{y}", width=0.5))
+    fig2.add_trace(
+        go.Bar(x=df_week['Week'], marker={'color': 'rgb(104, 92, 148)'}, 
+                   y=df_week['m3'], texttemplate="%{y}", width=0.5, visible=False))
     fig2.add_trace(
         go.Bar(x=df_month['Maand'], marker={'color': 'rgb(104, 92, 148)'}, 
                    y=df_month['m3'], texttemplate="%{y}", width=0.5, visible=False))
