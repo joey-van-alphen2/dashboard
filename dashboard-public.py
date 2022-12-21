@@ -92,11 +92,11 @@ def main():
                    name='Temperatuur', mode='lines+markers+text', textposition='top center',
                    marker={'size': 8}, marker_color='rgb(124, 196, 139)', visible=False), secondary_y=True,)
     fig1.add_trace(
-        go.Bar(x=df_month['Maand'], marker={'color': 'rgb(104, 92, 148)'},
-                   y=df_month['GJ'],visible=False, width=0.5))
+        go.Bar(x=df_month['Maand'], texttemplate="%{y}", marker={'color': 'rgb(104, 92, 148)'},
+                   y=df_month['GJ'],visible=False, width=0.5, name='Verbruik'))
     fig1.add_trace(
-        go.Bar(x=df_year['Jaar'], marker={'color': 'rgb(104, 92, 148)'},
-                   y=df_year['GJ'], width=0.5, visible=False))
+        go.Bar(x=df_year['Jaar'], texttemplate="%{y}", marker={'color': 'rgb(104, 92, 148)'},
+                   y=df_year['GJ'], width=0.5, name='Verbruik', visible=False))
 
     fig1.update_layout(
         updatemenus=[
@@ -131,10 +131,10 @@ def main():
 
     fig2.add_trace(
         go.Bar(x=df_week_show['Dag'], marker={'color': 'rgb(104, 92, 148)'},
-                   y=df_week_show['m3'], texttemplate="%{y}", width=0.5))
+                   y=df_week_show['m3'], texttemplate="%{y}", width=0.5, visible=False))
     fig2.add_trace(
         go.Bar(x=df_week['Week'], marker={'color': 'rgb(104, 92, 148)'}, 
-                   y=df_week['m3'], texttemplate="%{y}", width=0.5, visible=False))
+                   y=df_week['m3'], texttemplate="%{y}", width=0.5))
     fig2.add_trace(
         go.Bar(x=df_month['Maand'], marker={'color': 'rgb(104, 92, 148)'}, 
                    y=df_month['m3'], texttemplate="%{y}", width=0.5, visible=False))
