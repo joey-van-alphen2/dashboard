@@ -29,9 +29,9 @@ def main():
     st.sidebar.header('Verbruik per datum')
     with st.sidebar.form(key='df1', clear_on_submit=True):
         add_col1 = st.date_input("Datum")
-        add_col2 = st.number_input('Verwarming', min_value=df1['Verwarming'].iloc[-1], step=0.050, value=df1['Verwarming'].iloc[-1])#, format='%f')
-        add_col3 = st.number_input('Water', min_value=df1['Water'].iloc[-1], step=0.1, value=df1['Water'].iloc[-1])#, format='%f')
-        add_col4 = st.number_input('Temperatuur', step=1.0, value=df1['Temperatuur'].iloc[-1])#, format='%f')
+        add_col2 = st.number_input('Verwarming', min_value=df1['Verwarming'].iloc[-1], step=0.050, value=df1['Verwarming'].iloc[-1], format='%f')
+        add_col3 = st.number_input('Water', min_value=df1['Water'].iloc[-1], step=0.1, value=df1['Water'].iloc[-1], format='%f')
+        add_col4 = st.number_input('Temperatuur', step=1.0, value=df1['Temperatuur'].iloc[-1], format='%f')
         submit = st.form_submit_button('Submit')
         if submit:
             new_data = {'Datum': add_col1, 'Verwarming': add_col2, 'Water': add_col3, 'Temperatuur' : add_col4}
