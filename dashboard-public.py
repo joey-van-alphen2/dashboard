@@ -66,7 +66,7 @@ def main():
     df_month = df1.groupby('Maand')[['GJ','m3']].sum().reset_index()
     df_year = df1.groupby('Jaar')[['GJ','m3']].sum().reset_index()
 #   Gemiddelde temperatuur per maand berekenen
-    df_temp = df1.groupby('Week')['Temperatuur'].mean().to_frame().reset_index().tail(10)
+    df_temp = df1.groupby(['Jaar','Week'])['Temperatuur'].mean().to_frame().reset_index().tail(10)
     df_temp['Temperatuur'] = df_temp['Temperatuur'].round(decimals=1)
 
 #   plot voor verwarming
