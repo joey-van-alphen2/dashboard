@@ -57,14 +57,14 @@ def main():
     df1['Maand'] = df1.Datum.dt.strftime('%B')
     df1['Dag'] = df1.Datum.dt.strftime('%A')
     df1['Week'] = df1.Datum.dt.week
+    df1['Jaar'] = np.where((df1['Jaar']==2023)&(df1['Week']==52), 2022, df1['Jaar'])
 #   Omzetten naar dataframe
     df_week_show = df1.tail(7)
     df_week_show_st = df_week_show[['Datum', 'Verwarming', 'Water', 'GJ', 'm3']]
     df_week_show_st.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Tap Water', 'Verbruik Stadsverwarming in GJ', 'Verbruik Warm Tap Water in m3']
-    df_week1 = df1.groupby(['Jaar', 'Week'])
     df_week = df1.groupby(['Jaar', 'Week'])[['GJ','m3']].sum().reset_index().tail(10)
-    df_week['Jaar'] = np.where((df_week['Jaar']==2023)&(df_week['Week']==52), 2022, df_week['Jaar'])
-    df_week = df_week.sort_values(['Jaar','Week'])
+    #df_week['Jaar'] = np.where((df_week['Jaar']==2023)&(df_week['Week']==52), 2022, df_week['Jaar'])
+    #df_week = df_week.sort_values(['Jaar','Week'])
     df_month = df1.groupby('Maand')[['GJ','m3']].sum().reset_index()
     df_year = df1.groupby('Jaar')[['GJ','m3']].sum().reset_index()
 #   Gemiddelde temperatuur per maand berekenen
@@ -73,7 +73,7 @@ def main():
 
 #   plot voor verwarming
     df_week
-    df_week1
+    df1
 #   Create figure with secondary y-axis
     fig1 = make_subplots(specs=[[{"secondary_y": True}]])
 
