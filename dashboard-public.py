@@ -68,7 +68,7 @@ def main():
     df_temp['Temperatuur'] = df_temp['Temperatuur'].round(decimals=1)
 
 #   plot voor verwarming
-
+    df_week
 #   Create figure with secondary y-axis
     fig1 = make_subplots(specs=[[{"secondary_y": True}]])
 
