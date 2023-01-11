@@ -252,6 +252,11 @@ def main():
     max_temperatuur_gj = df1.loc[max_index_gj, 'Temperatuur']
     st.markdown(f'Het record met het meeste verbruik in GJ was op {max_date_gj}')
     
+    import unicodedata
+
+    # Get the degree symbol
+    degree_symbol = unicodedata.lookup("DEGREE SIGN")
+
     kpi1, kpi2, kpi3 = st.columns(3)
 
     kpi1.metric(
@@ -264,7 +269,7 @@ def main():
 
     kpi3.metric(
         label="Temperatuur op die dag",
-        value=f'{max_temperatuur_gj} Graden')
+        value=f'{max_temperatuur_gj} {degree_symbol}C')
 
 
 if __name__ == '__main__':
