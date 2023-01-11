@@ -271,7 +271,7 @@ def main():
     min_index = df1['GJ'].idxmin()
 
 # Haal de datum op uit de kolom 'date' met behulp van de bepaalde index
-    min_date = df1.loc[min_index, 'date']
+    min_date = df1.loc[min_index, 'Datum']
     min_index
     min_date
 
