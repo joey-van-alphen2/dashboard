@@ -272,7 +272,7 @@ def main():
         label="Temperatuur op die dag",
         value=f'{max_temperatuur_gj} {degree_symbol}C')
     
-    st.spacer(height=30)    
+    st.divider()   
     
     min_index_gj = df1['GJ'].idxmin()
     min_date_gj = df1.loc[min_index_gj, 'Datum'].strftime('%d-%m-%Y')
