@@ -268,10 +268,10 @@ def main():
         delta=round(((df1['m3'].iloc[-1])*9.92)-((df1.m3.mean())*9.92),2),
         delta_color='inverse')
     
-    min_index = df['GJ'].idxmin()
+    min_index = df1['GJ'].idxmin()
 
 # Haal de datum op uit de kolom 'date' met behulp van de bepaalde index
-    min_date = df.loc[min_index, 'date']
+    min_date = df1.loc[min_index, 'date']
     min_index
     min_date
 
