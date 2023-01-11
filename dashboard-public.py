@@ -70,7 +70,12 @@ def main():
     df_temp['Temperatuur'] = df_temp['Temperatuur'].round(decimals=1)
 
 #   plot voor verwarming
+   
+    # Get the degree symbol
+    import unicodedata
+    degree_symbol = unicodedata.lookup("DEGREE SIGN")
     
+
 #   Create figure with secondary y-axis
     fig1 = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -81,7 +86,7 @@ def main():
     fig1.add_trace(
         go.Scatter(x=df_week_show['Dag'],
                    y=df_week_show['Temperatuur'], text=df_week_show['Temperatuur'], 
-                   name='Temperatuur', mode='lines+markers+text', textposition='top center',
+                   name=f'Temperatuur in {degree_symbol}C', mode='lines+markers+text', textposition='top center',
                    marker={'size': 8}, marker_color='rgb(124, 196, 139)'), secondary_y=True,)
     fig1.add_trace(
         go.Bar(x=df_week['Week'],
@@ -89,7 +94,7 @@ def main():
     fig1.add_trace(
         go.Scatter(x=df_temp['Week'],
                    y=df_temp['Temperatuur'], text=df_temp['Temperatuur'], 
-                   name='Temperatuur', mode='lines+markers+text', textposition='top center',
+                   name=f'Temperatuur in {degree_symbol}C', mode='lines+markers+text', textposition='top center',
                    marker={'size': 8}, marker_color='rgb(124, 196, 139)', visible=False), secondary_y=True,)
     fig1.add_trace(
         go.Bar(x=df_month['Maand'], texttemplate="%{y}", marker={'color': 'rgb(104, 92, 148)'},
@@ -253,11 +258,6 @@ def main():
     
     st.markdown(f'Het record met het meeste verbruik in GJ was op {max_date_gj}')
     
-    import unicodedata
-
-    # Get the degree symbol
-    degree_symbol = unicodedata.lookup("DEGREE SIGN")
-
     kpi1, kpi2, kpi3 = st.columns(3)
 
     kpi1.metric(
