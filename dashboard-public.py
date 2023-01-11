@@ -253,8 +253,8 @@ def main():
         value= f'{round((df1.GJ.max()), 3)} GJ')
 
     kpi2.metric(
-        label="Gemiddelde kosten per dag",
-        value=f'€ {round(((df1.m3.mean())*9.92), 2)}')
+        label="Kosten",
+        value=f'€ {round(((df1.GJ.max()))*47.38), 2)}')
 
     kpi3.metric(
         label=f"Verbruik op {(df1['Datum'].iloc[-1]).strftime('%d-%m-%Y')}",
