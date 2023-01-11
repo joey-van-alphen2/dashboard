@@ -246,10 +246,11 @@ def main():
     
     st.subheader('Records')
     
-    # Haal de datum op uit de kolom 'date' met behulp van de bepaalde index
+    # Haal de datum op uit de kolom met behulp van de bepaalde index
     max_index_gj = df1['GJ'].idxmax()
     max_date_gj = df1.loc[max_index_gj, 'Datum'].strftime('%d-%m-%Y')
     max_temperatuur_gj = df1.loc[max_index_gj, 'Temperatuur']
+    
     st.markdown(f'Het record met het meeste verbruik in GJ was op {max_date_gj}')
     
     import unicodedata
@@ -270,8 +271,27 @@ def main():
     kpi3.metric(
         label="Temperatuur op die dag",
         value=f'{max_temperatuur_gj} {degree_symbol}C')
+    
+    min_index_gj = df1['GJ'].idxmin()
+    min_date_gj = df1.loc[min_index_gj, 'Datum'].strftime('%d-%m-%Y')
+    min_temperatuur_gj = df1.loc[min_index_gj, 'Temperatuur']    
+        
+    st.markdown(f'Het record met het minste verbruik in GJ was op {min_date_gj}')
+    
+    kpi1, kpi2, kpi3 = st.columns(3)
 
+    kpi1.metric(
+        label="Verbruik op die dag",
+        value= f'{round((df1.GJ.min()), 3)} GJ')
 
+    kpi2.metric(
+        label="Kosten op die dag",
+        value=f'€ {round((df1.GJ.min()*47.38), 2)}')
+
+    kpi3.metric(
+        label="Temperatuur op die dag",
+        value=f'{min_temperatuur_gj} {degree_symbol}C')
+    
 if __name__ == '__main__':
     main()
 
