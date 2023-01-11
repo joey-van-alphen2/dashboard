@@ -272,10 +272,12 @@ def main():
         label="Temperatuur op die dag",
         value=f'{max_temperatuur_gj} {degree_symbol}C')
     
+    st.empty()     
+    
     min_index_gj = df1['GJ'].idxmin()
     min_date_gj = df1.loc[min_index_gj, 'Datum'].strftime('%d-%m-%Y')
     min_temperatuur_gj = df1.loc[min_index_gj, 'Temperatuur']    
-    st.empty()     
+  
     st.markdown(f'Het record met het minste verbruik in GJ was op {min_date_gj}')
     
     kpi1, kpi2, kpi3 = st.columns(3)
@@ -292,9 +294,11 @@ def main():
         label="Temperatuur op die dag",
         value=f'{min_temperatuur_gj} {degree_symbol}C')
     
+    st.empty()
+    st.empty()
+    
     toon_data = st.checkbox('Toon alle data')
-    st.empty()
-    st.empty()
+    
     if toon_data:
         st.dataframe(df1)
     
