@@ -243,7 +243,30 @@ def main():
         delta_color='inverse')
 
     st.plotly_chart(fig2)
+    
+    st.subheader('Records')
+    
+    kpi1, kpi2, kpi3, kpi4 = st.columns(4)
 
+    kpi1.metric(
+        label="Hoogste record Verwarming",
+        value= f'{round((df1.GJ.max()), 3)} GJ')
+
+    kpi2.metric(
+        label="Gemiddelde kosten per dag",
+        value=f'€ {round(((df1.m3.mean())*9.92), 2)}')
+
+    kpi3.metric(
+        label=f"Verbruik op {(df1['Datum'].iloc[-1]).strftime('%d-%m-%Y')}",
+        value=f'{round((df1.m3.iloc[-1]), 2)} m3',
+        delta=round((df1['m3'].iloc[-1])-(df1.m3.mean()),2),
+        delta_color='inverse')
+
+    kpi4.metric(
+        label=f"Kosten op {(df1['Datum'].iloc[-1]).strftime('%d-%m-%Y')}",
+        value=f'€ {round(((df1.m3.iloc[-1])*9.92), 2)}',
+        delta=round(((df1['m3'].iloc[-1])*9.92)-((df1.m3.mean())*9.92),2),
+        delta_color='inverse')
 
 if __name__ == '__main__':
     main()
