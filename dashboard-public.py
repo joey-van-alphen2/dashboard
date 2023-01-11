@@ -250,7 +250,7 @@ def main():
     max_index_gj = df1['GJ'].idxmax()
     max_date_gj = df1.loc[max_index_gj, 'Datum']
     max_temperatuur_gj = df1.loc[max_index_gj, 'Temperatuur']
-    st.markdown(f'Het record met het meeste verbruik in GJ was op {max_date_gj}')
+    st.markdown(f'Het record met het meeste verbruik in GJ was op {max_date_gj.strftime('%d-%m-%Y')}')
     
     import unicodedata
 
