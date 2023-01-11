@@ -293,14 +293,12 @@ def main():
     kpi3.metric(
         label="Temperatuur op die dag",
         value=f'{min_temperatuur_gj} {degree_symbol}C')
+  
     
-    st.empty()
-    st.empty()
+    #toon_data = st.checkbox('Toon alle data')
     
-    toon_data = st.checkbox('Toon alle data')
-    
-    if toon_data:
-        st.dataframe(df1)
+    #if toon_data:
+    #    st.dataframe(df1)
     
 if __name__ == '__main__':
     main()
