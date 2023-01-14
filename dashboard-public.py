@@ -249,19 +249,60 @@ def main():
 
     st.plotly_chart(fig2)
     
+    st.subheader('Statistieken per datum')
+
+    # Vraag om datum input
+    selected_date = st.date_input("Selecteer een datum:")
+
+    # Convert 'Datum' column to datetime type and format it to '%d-%m-%Y'
+    df1['Datum'] = pd.to_datetime(df1['Datum']).dt.strftime('%d-%m-%Y')
+
+    # Format selected_date to '%d-%m-%Y'
+    selected_date = selected_date.strftime('%d-%m-%Y')
+
+    # Zoek index van geselecteerde datum in df1
+    selected_row = df1[df1['Datum'] == selected_date]
+
+    if selected_row.empty:
+        st.error("Geen gegevens gevonden voor de geselecteerde datum.")
+    else:
+        selected_index = selected_row.index[0]
+        # Maak gebruik van de geselecteerde index om de metrics voor die datum te tonen
+        kpi1, kpi2, kpi3 = st.columns(3)
+
+        kpi1.metric(
+            label=f"Verbruik op {selected_date}",
+            value=f'{round((df1.GJ.loc[selected_index]), 3)} GJ',
+            delta=round((df1['GJ'].loc[selected_index])-(df1.GJ.mean()),3),
+            delta_color='inverse')
+
+        kpi2.metric(
+            label=f"Kosten op {selected_date}",
+            value=f'€ {round(((df1.GJ.loc[selected_index])*47.38), 2)}',
+            delta=round(((df1['GJ'].loc[selected_index])*47.38)-((df1.GJ.mean())*47.38),2),
+            delta_color='inverse')
+
+        kpi3.metric(
+            label=f"Temperatuur op {selected_date}",
+            value=f'{df1.Temperatuur.loc[selected_index]} {degree_symbol}C')
+
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
+    
     st.subheader('Records')
     
     # Haal de datum op uit de kolom met behulp van de bepaalde index
     max_index_gj = df1['GJ'].idxmax()
-    max_date_gj = df1.loc[max_index_gj, 'Datum'].strftime('%d-%m-%Y')
+    max_date_gj = df1.loc[max_index_gj, 'Datum']
     max_temperatuur_gj = df1.loc[max_index_gj, 'Temperatuur']
     
     if (df1.GJ.iloc[-1]) == (df1.GJ.max()):
         st.error('Oei, een nieuw record... Het hoogste verbruik tot nu toe:')
         
     st.markdown(f'Het record met het meeste verbruik in GJ was op {max_date_gj}')
-    
-    kpi1, kpi2, kpi3 = st.columns(3)
+
+    kpi1, kpi2, kpi3 = st.columns(3) 
 
     kpi1.metric(
         label="Verbruik op die dag",
@@ -278,12 +319,12 @@ def main():
     st.markdown("<br>", unsafe_allow_html=True)
     
     min_index_gj = df1['GJ'].idxmin()
-    min_date_gj = df1.loc[min_index_gj, 'Datum'].strftime('%d-%m-%Y')
+    min_date_gj = df1.loc[min_index_gj, 'Datum']
     min_temperatuur_gj = df1.loc[min_index_gj, 'Temperatuur']    
-    
+  
     if (df1.GJ.iloc[-1]) == (df1.GJ.min()):
         st.balloons()
-        st.success('Hoera, een nieuw record! Het laagste verbruik tot nu toe:')  
+        st.success('Hoera, een nieuw record! Het laagste verbruik tot nu toe:')
         
     st.markdown(f'Het record met het minste verbruik in GJ was op {min_date_gj}')
     
