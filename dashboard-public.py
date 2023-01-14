@@ -264,7 +264,7 @@ def main():
     selected_row = df1[df1['Datum'] == selected_date]
 
     if selected_row.empty:
-        st.error("Geen gegevens gevonden voor de geselecteerde datum.")
+        st.error("Geen gegevens gevonden voor de geselecteerde datum")
     else:
         selected_index = selected_row.index[0]
         # Maak gebruik van de geselecteerde index om de metrics voor die datum te tonen
