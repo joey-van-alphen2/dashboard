@@ -175,24 +175,69 @@ def main():
     fig2.update_layout(height=500, width=730)
         
 #   4 kpi's maken 
+    col1, col2 = st.columns(2)
     kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+    time_period = col1.selectbox("Selecteer overzicht type:", ["Totaal", "Maand", "Jaar"], key='Totaal')
+    if time_period == "Totaal":
+        kpi1.metric(
+            label="Totaal verbruik 🔥",
+            value=f'{round(df1.GJ.sum(), 2)} GJ')
 
-#   kpi's waardes meegeven
-    kpi1.metric(
-        label="Totaal verbruik 🔥",
-        value=f'{round(df1.GJ.sum(), 2)} GJ')
+        kpi2.metric(
+            label="Kosten verwarming 💰",
+            value=f'€ {round((df1.GJ.sum()*47.38), 2)}')
 
-    kpi2.metric(
-        label="Kosten verwarming 💰",
-        value=f'€ {round((df1.GJ.sum()*47.38), 2)}')
+        kpi3.metric(
+            label="Totaal verbruik 💧",
+            value= f'{round((df1.m3.sum()), 2)} m3')
 
-    kpi3.metric(
-        label="Totaal verbruik 💧",
-        value= f'{round((df1.m3.sum()), 2)} m3')
+        kpi4.metric(
+            label="Kosten warm tap water 💰",
+            value=f'€ {round((df1.m3.sum()*9.92), 2)}')
     
-    kpi4.metric(
-        label="Kosten warm tap water 💰",
-        value=f'€ {round((df1.m3.sum()*9.92), 2)}')
+    elif time_period == "Maand":
+        months = df1["Maand"].unique()
+        last_value = df1.iloc[-1]["Maand"]
+        selected_month = col2.selectbox("Selecteer een maand:", months)
+        st.markdown(f'Statistieken in {selected_month}')
+        kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+        kpi1.metric(
+            label="Totaal verbruik 🔥",
+            value=f'{round(df1[df1["Maand"] == selected_month].GJ.sum(), 2)} GJ')
+
+        kpi2.metric(
+            label="Kosten verwarming 💰" ,
+            value=f'€ {round((df1[df1["Maand"] == selected_month].GJ.sum()*47.38), 2)}')
+
+        kpi3.metric(
+            label="Totaal verbruik 💧" ,
+            value= f'{round((df1[df1["Maand"] == selected_month].m3.sum()), 2)} m3')
+
+        kpi4.metric(
+            label="Kosten warm tap water 💰",
+            value=f'€ {round((df1[df1["Maand"] == selected_month].m3.sum()*9.92), 2)}')
+        
+    elif time_period == "Jaar":
+        years = df1["Jaar"].unique()
+        last_value = df1.iloc[-1]["Jaar"]
+        selected_year = col2.selectbox("Selecteer een jaar:", years)
+        st.markdown(f'Statistieken in {selected_year}')
+        kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+        kpi1.metric(
+            label="Totaal verbruik 🔥",
+            value=f'{round(df1[df1["Jaar"] == selected_year].GJ.sum(), 2)} GJ')
+
+        kpi2.metric(
+            label="Kosten verwarming 💰" ,
+            value=f'€ {round((df1[df1["Jaar"] == selected_year].GJ.sum()*47.38), 2)}')
+
+        kpi3.metric(
+            label="Totaal verbruik 💧",
+            value= f'{round((df1[df1["Jaar"] == selected_year].m3.sum()), 2)} m3')
+
+        kpi4.metric(
+            label="Kosten warm tap water 💰",
+            value=f'€ {round((df1[df1["Jaar"] == selected_year].m3.sum()*9.92), 2)}')
 
 #   Plots met kpi's weergeven    
     st.header('Verbruik afgelopen week')
