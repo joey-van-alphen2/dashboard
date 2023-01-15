@@ -241,7 +241,8 @@ def main():
 
 #   Plots met kpi's weergeven    
     st.header('Verbruik afgelopen week')
-    st.set_dataframe_style(style="background-color:#F4D03F;")
+    #st.set_dataframe_style(style="background-color:#F4D03F;")
+    st.beta_css("table.css")
     st.dataframe(df_week_show_st)
     
     st.subheader('Verbruik stadsverwarming')
