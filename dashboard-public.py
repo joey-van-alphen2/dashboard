@@ -242,9 +242,9 @@ def main():
 #   Plots met kpi's weergeven    
     st.header('Verbruik afgelopen week')
     #st.set_dataframe_style(style="background-color:#F4D03F;")
-    st.beta_css("table.css")
-    st.dataframe(df_week_show_st)
-    
+    #st.beta_css("table.css")
+    #st.dataframe(df_week_show_st)
+    st.table(df_week_show_st, style="background-color:#F4D03F;")
     st.subheader('Verbruik stadsverwarming')
     kpi1, kpi2, kpi3, kpi4 = st.columns(4)
 
