@@ -125,7 +125,7 @@ def main():
                          method="update",
                          args=[{"visible": [False, False, False, False, False, True]}])
 
-                ]))], dragmode='pan')  
+                ]))], dragmode='select')  
 
     fig1.update_yaxes(showticklabels=False, showgrid=False, secondary_y=True)
     fig1.update_yaxes(title_text="Verbruik in GJ", showticklabels=True, showgrid=True, secondary_y=False)
@@ -169,7 +169,7 @@ def main():
                          method="update",
                          args=[{"visible": [False, False, False, True]}])
 
-                ]))], dragmode='pan')  
+                ]))], dragmode='select')  
         
     fig2.update_yaxes(title_text="Verbruik in m3")
     fig2.update_layout(height=500, width=730)
