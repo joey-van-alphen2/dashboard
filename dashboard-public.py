@@ -75,6 +75,8 @@ def main():
     import unicodedata
     degree_symbol = unicodedata.lookup("DEGREE SIGN")
     
+    if df1.Temperatuur.iloc[-1] < 0:
+        st.snowflakes()
 
 #   Create figure with secondary y-axis
     fig1 = make_subplots(specs=[[{"secondary_y": True}]])
