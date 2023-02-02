@@ -60,7 +60,8 @@ def main():
     df1['Jaar'] = np.where((df1['Jaar']==2023)&(df1['Week']==52), 2022, df1['Jaar'])
 #   Omzetten naar dataframe
     df_week_show = df1.tail(7)
-    df_week_show['Datum'] = pd.to_datetime(df_week_show['Datum'], format='%Y-%m-%d')
+    df_week_show['Datum'] = pd.to_datetime(df_week_show['Datum'], format='%Y-%m-%d').dt.strftime('%d-%m-%Y')
+    #pd.to_datetime(df1['Datum']).dt.strftime('%d-%m-%Y')
     #df_week_show['Datum'] = df_week_show['Datum'].strftime('%d-%m-%Y')
     df_week_show_st = df_week_show[['Datum', 'Verwarming', 'Water', 'Temperatuur']].astype(str)
     df_week_show_st.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Warm Tap Water', 'Temperatuur']
