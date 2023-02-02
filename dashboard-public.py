@@ -61,7 +61,7 @@ def main():
 #   Omzetten naar dataframe
     df_week_show = df1.tail(7)
     df_week_show['Datum'] = pd.to_datetime(df_week_show['Datum'], format='%Y-%m-%d')
-    df_week_show['Datum'] = df_week_show['Datum'].strftime('%d-%m-%Y')
+    #df_week_show['Datum'] = df_week_show['Datum'].strftime('%d-%m-%Y')
     df_week_show_st = df_week_show[['Datum', 'Verwarming', 'Water', 'Temperatuur']].astype(str)
     df_week_show_st.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Warm Tap Water', 'Temperatuur']
     df_week = df1.groupby(['Jaar','Week'])[['GJ','m3']].sum().reset_index().tail(10).sort_values(['Jaar','Week'])
