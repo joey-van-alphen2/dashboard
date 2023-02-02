@@ -60,7 +60,7 @@ def main():
     df1['Jaar'] = np.where((df1['Jaar']==2023)&(df1['Week']==52), 2022, df1['Jaar'])
 #   Omzetten naar dataframe
     df_week_show = df1.tail(7)
-    df_week_show_st = df_week_show[['Datum', 'Verwarming', 'Water', 'Temperatuur']]
+    df_week_show_st = df_week_show[['Datum', 'Verwarming', 'Water', 'Temperatuur']].astype(str)
     df_week_show_st.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Warm Tap Water', 'Temperatuur']
     df_week = df1.groupby(['Jaar','Week'])[['GJ','m3']].sum().reset_index().tail(10).sort_values(['Jaar','Week'])
     df_month = df1.groupby('Maand')[['GJ','m3']].sum().reset_index()
