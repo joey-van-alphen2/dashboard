@@ -64,7 +64,7 @@ def main():
     df_week_show_st = df_week_show[['Datum', 'Verwarming', 'Water', 'Temperatuur']].astype(str)
     df_week_show_st.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Warm Tap Water', 'Gemiddelde Temperatuur']
     df_week = df1.groupby(['Jaar','Week'])[['GJ','m3']].sum().reset_index().tail(10).sort_values(['Jaar','Week'])
-    df_month = df1.groupby(['Jaar','Maand'])[['GJ','m3']].sum().reset_index().sort_values(['Jaar','Maand']).drop('Jaar',axis=1)
+    df_month = df1.groupby(['Jaar','Maand'])[['GJ','m3']].sum().reset_index().sort_values(['Jaar','Maand']).drop('Jaar',axis=0)
     df_year = df1.groupby('Jaar')[['GJ','m3']].sum().reset_index()
 #   Gemiddelde temperatuur per maand berekenen
     df_temp = df1.groupby(['Jaar','Week'])['Temperatuur'].mean().to_frame().reset_index().tail(10)
