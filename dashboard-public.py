@@ -414,6 +414,28 @@ def main():
         'y': [10, 20, 30, 40]
     })
     
+    
+
+    colors = ['lightblue'] * (len(df) - 1) + ['red']
+    line_widths = [1] * (len(df) - 1) + [2]
+    line_dashes = ['solid'] * (len(df) - 1) + ['dot']
+    
+    fig = go.Figure()
+    
+    for i in range(len(df)):
+        fig.add_trace(go.Bar(
+            x=[df['x'][i]],
+            y=[df['y'][i]],
+            marker=dict(
+                color=colors[i],
+                line=dict(width=line_widths[i], dash=line_dashes[i])
+            )
+        ))
+        
+        
+    
+    st.plotly_chart(fig)
+    
     colors = ['lightblue'] * (len(df) - 1) + ['red']
     line_widths = [1] * (len(df) - 1) + [2]
     line_dashes = ['solid'] * (len(df) - 1) + ['dot']
