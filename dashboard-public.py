@@ -68,7 +68,8 @@ def main():
     df_month = df1.groupby('Maand')[['GJ','m3']].sum().reset_index()
     month_order = ['December', 'January', 'February']#, 'March', 'April', 'May']
     df_month['Maand'] = pd.Categorical(df_month['Maand'], categories=month_order, ordered=True)
-
+    df_month = df_month.sort_values('Maand')
+    
     #df_month.drop('Jaar', axis=1, inplace=True)
     df_year = df1.groupby('Jaar')[['GJ','m3']].sum().reset_index()
 #   Gemiddelde temperatuur per maand berekenen
