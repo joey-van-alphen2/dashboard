@@ -405,6 +405,23 @@ def main():
     #    st.dataframe(df1)
     
     
+    
+
+    df = pd.DataFrame({
+        'x': [1, 2, 3, 4],
+        'y': [10, 20, 30, 40]
+    })
+    
+    colors = ['lightblue'] * (len(df) - 1) + ['red']
+    line_widths = [1] * (len(df) - 1) + [2]
+    line_dashes = ['solid'] * (len(df) - 1) + ['dashdot']
+    
+    fig = go.Figure(data=[go.Bar(x=df['x'], y=df['y'], marker=dict(color=colors, line=dict(width=line_widths, dash=line_dashes)))])
+    
+    st.plotly_chart(fig)
+
+    
+    
 if __name__ == '__main__':
     main()
 
