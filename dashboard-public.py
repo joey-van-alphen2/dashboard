@@ -57,22 +57,23 @@ def main():
     df1['Maand'] = df1.Datum.dt.strftime('%B')
     df1['Dag'] = df1.Datum.dt.strftime('%A')
     df1['Week'] = df1.Datum.dt.week
+#   2023 meting manipuleren
     df1['Jaar'] = np.where((df1['Jaar']==2023)&(df1['Week']==52), 2022, df1['Jaar'])
 #   Omzetten naar dataframe
     df_week_show = df1.tail(7)
     df_week_show['Datum'] = pd.to_datetime(df_week_show['Datum'], format='%Y-%m-%d').dt.strftime('%d-%m-%Y')
     df_week_show_st = df_week_show[['Datum', 'Verwarming', 'Water', 'Temperatuur']].astype(str)
     df_week_show_st.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Warm Tap Water', 'Gemiddelde Temperatuur']
+#   Verbruik per week naar dataframe
     df_week = df1.groupby(['Jaar','Week'])[['GJ','m3']].sum().reset_index().tail(10).sort_values(['Jaar','Week'])
-    
+#   Verbruik per maand naar dataframe
     df_month = df1.groupby('Maand')[['GJ','m3']].sum().reset_index()
     month_order = ['December', 'January', 'February']#, 'March', 'April', 'May']
     df_month['Maand'] = pd.Categorical(df_month['Maand'], categories=month_order, ordered=True)
     df_month = df_month.sort_values('Maand')
-    
-    #df_month.drop('Jaar', axis=1, inplace=True)
+#   Verbruik per jaar naar dataframe
     df_year = df1.groupby('Jaar')[['GJ','m3']].sum().reset_index()
-#   Gemiddelde temperatuur per maand berekenen
+#   Gemiddelde temperatuur per week berekenen
     df_temp = df1.groupby(['Jaar','Week'])['Temperatuur'].mean().to_frame().reset_index().tail(10)
     df_temp['Temperatuur'] = df_temp['Temperatuur'].round(decimals=1)
 
@@ -190,7 +191,7 @@ def main():
     if time_period == "Totaal":
         kpi1.metric(
             label="Totaal verbruik 🔥",
-            value=f'{round(df1.GJ.sum(), 2)} GJ')
+            value=f'{round(df1.GJ.sum(), 3)} GJ')
 
         kpi2.metric(
             label="Kosten verwarming 💰",
@@ -198,7 +199,7 @@ def main():
 
         kpi3.metric(
             label="Totaal verbruik 💧",
-            value= f'{round((df1.m3.sum()), 2)} m3')
+            value= f'{round((df1.m3.sum()), 1)} m3')
 
         kpi4.metric(
             label="Kosten warm tap water 💰",
@@ -212,7 +213,7 @@ def main():
         kpi1, kpi2, kpi3, kpi4 = st.columns(4)
         kpi1.metric(
             label="Totaal verbruik 🔥",
-            value=f'{round(df1[df1["Maand"] == selected_month].GJ.sum(), 2)} GJ')
+            value=f'{round(df1[df1["Maand"] == selected_month].GJ.sum(), 3)} GJ')
 
         kpi2.metric(
             label="Kosten verwarming 💰" ,
@@ -220,7 +221,7 @@ def main():
 
         kpi3.metric(
             label="Totaal verbruik 💧" ,
-            value= f'{round((df1[df1["Maand"] == selected_month].m3.sum()), 2)} m3')
+            value= f'{round((df1[df1["Maand"] == selected_month].m3.sum()), 1)} m3')
 
         kpi4.metric(
             label="Kosten warm tap water 💰",
@@ -234,7 +235,7 @@ def main():
         kpi1, kpi2, kpi3, kpi4 = st.columns(4)
         kpi1.metric(
             label="Totaal verbruik 🔥",
-            value=f'{round(df1[df1["Jaar"] == selected_year].GJ.sum(), 2)} GJ')
+            value=f'{round(df1[df1["Jaar"] == selected_year].GJ.sum(), 3)} GJ')
 
         kpi2.metric(
             label="Kosten verwarming 💰" ,
@@ -242,7 +243,7 @@ def main():
 
         kpi3.metric(
             label="Totaal verbruik 💧",
-            value= f'{round((df1[df1["Jaar"] == selected_year].m3.sum()), 2)} m3')
+            value= f'{round((df1[df1["Jaar"] == selected_year].m3.sum()), 1)} m3')
 
         kpi4.metric(
             label="Kosten warm tap water 💰",
