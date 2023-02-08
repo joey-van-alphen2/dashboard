@@ -65,7 +65,7 @@ def main():
     df_week_show_st = df_week_show[['Datum', 'Verwarming', 'Water', 'Temperatuur']].astype(str)
     df_week_show_st.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Warm Tap Water', 'Gemiddelde Temperatuur']
 #   Verbruik per week naar dataframe
-    df_week = df1.groupby(['Jaar','Week'])[['GJ','m3']].sum().reset_index().tail(10).sort_values(['Jaar','Week'])
+    df_week = df1.groupby(['Jaar','Week'])[['GJ','m3']].sum().reset_index().tail(8).sort_values(['Jaar','Week'])
 #   Verbruik per maand naar dataframe
     df_month = df1.groupby('Maand')[['GJ','m3']].sum().reset_index()
     month_order = ['December', 'January', 'February']#, 'March', 'April', 'May']
@@ -74,7 +74,7 @@ def main():
 #   Verbruik per jaar naar dataframe
     df_year = df1.groupby('Jaar')[['GJ','m3']].sum().reset_index()
 #   Gemiddelde temperatuur per week berekenen
-    df_temp = df1.groupby(['Jaar','Week'])['Temperatuur'].mean().to_frame().reset_index().tail(10)
+    df_temp = df1.groupby(['Jaar','Week'])['Temperatuur'].mean().to_frame().reset_index().tail(8)
     df_temp['Temperatuur'] = df_temp['Temperatuur'].round(decimals=1)
 
 #   plot voor verwarming
