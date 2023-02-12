@@ -181,10 +181,10 @@ def main():
                 x=0.57,
                 y=1.2,
                 buttons=list([
-                    dict(label="Dag",
+                    dict(label="Week",
                          method="update",
                          args=[{"visible": [True, False, False, False]}]),
-                    dict(label="Week",
+                    dict(label="Dag",
                          method="update",
                          args=[{"visible": [False, True, False, False]}]),
                     dict(label="Maand",
