@@ -158,13 +158,12 @@ def main():
 #   Plot voor tap water
     fig2 = go.Figure()
 
-    
+    fig2.add_trace(
+        go.Bar(x=df_week_show['Dag'], marker={'color': 'rgb(6,52,85)'},
+                   y=df_week_show['m3'], texttemplate="%{y}", width=0.5, visible=True))
     fig2.add_trace(
         go.Bar(x=df_week['Week'], marker={'color': 'rgb(6,52,85)'}, 
-                   y=df_week['m3'], texttemplate="%{y}", width=0.5, visible=True))
-    #fig2.add_trace(
-        #go.Bar(x=df_week_show['Dag'], marker={'color': 'rgb(6,52,85)'},
-                   #y=df_week_show['m3'], texttemplate="%{y}", width=0.5, visible=False))
+                   y=df_week['m3'], texttemplate="%{y}", width=0.5, visible=False))
     fig2.add_trace(
         go.Bar(x=df_month['Maand'], marker={'color': 'rgb(6,52,85)'}, 
                    y=df_month['m3'], texttemplate="%{y}", width=0.5, visible=False))
@@ -181,18 +180,18 @@ def main():
                 x=0.57,
                 y=1.2,
                 buttons=list([
+                    dict(label="Dag",
+                         method="update",
+                         args=[{"visible": [True, False, False, False]}]),
                     dict(label="Week",
                          method="update",
-                         args=[{"visible": [True, False, False]}]),
-                    #dict(label="Dag",
-                         #method="update",
-                         #args=[{"visible": [False, True, False]}]),
+                         args=[{"visible": [False, True, False, False]}]),
                     dict(label="Maand",
                          method="update",
-                         args=[{"visible": [False, True, False]}]),
+                         args=[{"visible": [False, False, True, False]}]),
                     dict(label="Jaar",
                          method="update",
-                         args=[{"visible": [False, False, True]}])
+                         args=[{"visible": [False, False, False, True]}])
 
                 ]))], dragmode=False)  
         
