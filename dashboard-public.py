@@ -102,7 +102,7 @@ def main():
         go.Scatter(x=df_week_show['Dag'],
                    y=df_week_show['Temperatuur'], text=df_week_show['Temperatuur'], 
                    name=f'Temperatuur in {degree_symbol}C', mode='lines+markers+text', textposition='top center',
-                   marker={'size': 8, 'color': 'rgb(124, 196, 139)', 'textfont': dict(color= "white")}, 
+                   marker={'size': 8}, marker_color='rgb(124, 196, 139)'), 
                    secondary_y=True,)
     fig1.add_trace(
         go.Bar(x=df_week['Week'],
