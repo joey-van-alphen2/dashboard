@@ -118,8 +118,8 @@ def main():
     fig1.add_trace(
         go.Scatter(x=df_temp['Week'],
                    y=df_temp['Temperatuur'], text=df_temp['Temperatuur'], 
-                   name=f'Temperatuur in {degree_symbol}C', mode='lines+markers+text', textposition='top center',
-                   marker={'size': 8}, marker_color='rgb(124, 196, 139)', visible=False), secondary_y=True,)
+                   name=f'Temperatuur in {degree_symbol}C', mode='lines+markers+text', textposition='top center', textfont = dict(color='grey'),
+                   marker={'size': 8}, marker_color='rgb(16,174,219)', visible=False), secondary_y=True,)
     fig1.add_trace(
         go.Bar(x=df_month['Maand'], texttemplate="%{y}", marker={'color': 'rgb(6,52,85)'},
                    y=df_month['GJ'],visible=False, width=0.5, name='Verbruik'))
