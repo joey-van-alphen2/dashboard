@@ -97,20 +97,12 @@ def main():
 #   Add Traces
     fig1.add_trace(
         go.Bar(x=df_week_show['Dag'],
-                   y=df_week_show['GJ'], texttemplate="%{y}", marker={'color': 'rgb(6,52,85)'}, width=0.5, name='Verbruik'))
+                   y=df_week_show['GJ'], texttemplate="%{y}", marker={'color': 'rgb(6,52,85)'}, width=0.5, name='Verbruik'))          
     fig1.add_trace(
         go.Scatter(x=df_week_show['Dag'],
                    y=df_week_show['Temperatuur'], text=df_week_show['Temperatuur'], 
                    name=f'Temperatuur in {degree_symbol}C', mode='lines+markers+text', textposition='top center',
-                   marker={'size': 8, 'color': 'rgb(124, 196, 139)'},
-                   textfont=dict(color=[ "white" if i < j else "black" for i, j in zip(df_week_show['Temperatuur'], df_week_show['GJ']) ]),
-                   line=dict(color='rgb(124, 196, 139)')), secondary_y=True,)
-                
-    #fig1.add_trace(
-        #go.Scatter(x=df_week_show['Dag'],
-                   #y=df_week_show['Temperatuur'], text=df_week_show['Temperatuur'], 
-                   #name=f'Temperatuur in {degree_symbol}C', mode='lines+markers+text', textposition='top center',
-                   #marker={'size': 8}, marker_color='rgb(124, 196, 139)'), secondary_y=True,)
+                   marker={'size': 8}, marker_color='rgb(124, 196, 139)'), textfont=dict(color=[ "white"]), secondary_y=True,)
     fig1.add_trace(
         go.Bar(x=df_week['Week'],
                    y=df_week['GJ'], texttemplate="%{y}", marker={'color': 'rgb(104, 92, 148)'}, width=0.5, visible=False, name='Verbruik'))
