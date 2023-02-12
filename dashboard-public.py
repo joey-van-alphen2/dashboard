@@ -156,6 +156,13 @@ def main():
     fig1.update_layout(height=500, width=800)
     
 #   Plot voor tap water
+
+    df_week['Week'] = df_week['Week'].astype(str)
+    df_week_show['Dag'] = df_week_show['Dag'].astype(str)
+    df_month['Maand'] = df_month['Maand'].astype(str)
+    df_year['Jaar'] = df_year['Jaar'].astype(str)
+    
+    
     fig2 = go.Figure()
 
     fig2.add_trace(
