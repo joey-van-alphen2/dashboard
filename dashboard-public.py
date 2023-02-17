@@ -162,7 +162,7 @@ def main():
     df_month['Maand'] = df_month['Maand'].astype(str)
     df_year['Jaar'] = df_year['Jaar'].astype(str)
     
-   df_week = df_week.astype(str)
+    df_week = df_week.astype(str)
                            
     fig2 = go.Figure()
 
