@@ -298,7 +298,7 @@ def main():
         delta=round(((df1['GJ'].iloc[-1])*47.38)-((df1.GJ.mean())*47.38),2),
         delta_color='inverse')
     
-    st.plotly_chart(fig1) 
+    st.plotly_chart(fig1, theme="streamlit") 
     
     st.subheader('Verbruik warm tap water')
     
