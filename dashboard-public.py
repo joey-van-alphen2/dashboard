@@ -157,10 +157,10 @@ def main():
     
 #   Plot voor tap water
 
-    df_week['Week'] = df_week['Week'].astype(str)
-    df_week_show['Dag'] = df_week_show['Dag'].astype(str)
-    df_month['Maand'] = df_month['Maand'].astype(str)
-    df_year['Jaar'] = df_year['Jaar'].astype(str)
+    df_week = df_week.astype(str)
+    df_week_show = df_week_show.astype(str)
+    df_month = df_month.astype(str)
+    df_year = df_year.astype(str)
     
     df_week = df_week.astype(str)
                            
@@ -325,7 +325,7 @@ def main():
         delta=round(((df1['m3'].iloc[-1])*9.92)-((df1.m3.mean())*9.92),2),
         delta_color='inverse')
 
-    st.plotly_chart(fig2, theme=None)
+    st.plotly_chart(fig2, theme='streamlit)
     
     st.subheader('Statistieken per datum')
 
