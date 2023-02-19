@@ -164,7 +164,7 @@ def main():
     
     #df_week = df_week.astype(str)
     
-    #df_week
+    df_week
                            
     fig2 = go.Figure()
 
