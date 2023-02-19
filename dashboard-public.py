@@ -163,6 +163,8 @@ def main():
     df_year = df_year.astype(str)
     
     df_week = df_week.astype(str)
+    
+    df_week
                            
     fig2 = go.Figure()
 
