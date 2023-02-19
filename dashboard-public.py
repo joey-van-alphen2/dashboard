@@ -157,10 +157,10 @@ def main():
     
 #   Plot voor tap water
 
-    #df_week = df_week.astype(str)
-    #df_week_show = df_week_show.astype(str)
-    #df_month = df_month.astype(str)
-    #df_year = df_year.astype(str)
+    df_week = df_week.astype(str)
+    df_week_show = df_week_show.astype(str)
+    df_month = df_month.astype(str)
+    df_year = df_year.astype(str)
     
     #df_week = df_week.astype(str)
     
