@@ -419,16 +419,16 @@ def main():
         label="Temperatuur op die dag",
         value=f'{min_temperatuur_gj} {degree_symbol}C')
   
-    df1.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Warm Tap Water', 'Temperatuur', 'Verbruik_gj', 'Verbruik_m3', 'Jaar', 'Maand', 'Dag', 'Week']
-    
     st.markdown("<br>", unsafe_allow_html=True)
     
     st.subheader('Data exporteren')
+   
+    df1.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Warm Tap Water', 'Temperatuur', 'Verbruik_gj', 'Verbruik_m3', 'Jaar', 'Maand', 'Dag', 'Week']
     
-    selected_columns = st.multiselect('Selecteer de gewenste kolommen', options=df1.columns)
+    selected_columns = st.multiselect('Selecteer de gewenste kolommen:', options=df1.columns)
 
     # filter dataframe op geselecteerde kolommen
-    df_selected = df1[selected_columns]
+    df_selected = df1[selected_columns].astype(str)
 
     # converteer het gefilterde dataframe naar CSV-tekststring
     csv = df_selected.to_csv(index=False)
