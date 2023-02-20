@@ -419,7 +419,7 @@ def main():
         label="Temperatuur op die dag",
         value=f'{min_temperatuur_gj} {degree_symbol}C')
   
-      df1.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Warm Tap Water', 'Temperatuur', 'Verbruik_gj', 'Verbruik_m3', 'Jaar', 'Maand', 'Dag', 'Week']
+    df1.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Warm Tap Water', 'Temperatuur', 'Verbruik_gj', 'Verbruik_m3', 'Jaar', 'Maand', 'Dag', 'Week']
     
     st.markdown("<br>", unsafe_allow_html=True)
     
