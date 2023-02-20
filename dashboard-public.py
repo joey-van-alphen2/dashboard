@@ -431,7 +431,7 @@ def main():
     selected_columns = st.multiselect('Selecteer de gewenste kolommen:', options=['Alle kolommen'] + [col for col in df1.columns])
 
     # Als "Alle" is geselecteerd, dan worden alle kolommen gekozen
-    if 'Alle' in selected_columns:
+    if 'Alle kolommen' in selected_columns:
         selected_columns = df1.columns
 
     # filter dataframe op geselecteerde kolommen
