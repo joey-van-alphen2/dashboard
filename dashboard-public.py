@@ -439,10 +439,10 @@ def main():
     file_name='warmte_water.csv',
     mime='text/csv')
     
-    #toon_data = st.checkbox('Toon alle data')
+    toon_data = st.checkbox('Toon alle data')
     
-    #if toon_data:
-    #    st.dataframe(df1)
+    if toon_data:
+        st.dataframe(df1)
     
 if __name__ == '__main__':
     main()
