@@ -423,7 +423,8 @@ def main():
     
     st.subheader('Data exporteren')
     
-    df1['GJ'] = df1['GJ'].astype(str)
+    df1['GJ'] = df1['GJ'].apply(lambda x: round(x, 3))
+    df1['m3'] = df1['m3'].apply(lambda x: round(x, 1))
    
     df1.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Warm Tap Water', 'Temperatuur', 'Verbruik_gj', 'Verbruik_m3', 'Jaar', 'Maand', 'Dag', 'Week']
     
@@ -438,7 +439,7 @@ def main():
     df_selected = df1[selected_columns]
 
     # converteer het gefilterde dataframe naar CSV-tekststring
-    csv = df_selected.to_csv(index=False, float_format="%.3f")
+    csv = df_selected.to_csv(index=False)
     
     st.download_button(
     label="Exporteer naar CSV",
