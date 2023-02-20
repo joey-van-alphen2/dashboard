@@ -425,7 +425,7 @@ def main():
    
     df1.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Warm Tap Water', 'Temperatuur', 'Verbruik_gj', 'Verbruik_m3', 'Jaar', 'Maand', 'Dag', 'Week']
     
-    selected_columns = st.multiselect('Selecteer de gewenste kolommen:', options=df1.columns)
+    selected_columns = st.multiselect('Selecteer de gewenste kolommen:', options=['Alle', df1.columns])
 
     # filter dataframe op geselecteerde kolommen
     df_selected = df1[selected_columns].astype(str)
