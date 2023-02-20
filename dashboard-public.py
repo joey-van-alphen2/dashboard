@@ -425,10 +425,15 @@ def main():
    
     df1.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Warm Tap Water', 'Temperatuur', 'Verbruik_gj', 'Verbruik_m3', 'Jaar', 'Maand', 'Dag', 'Week']
     
-    selected_columns = st.multiselect('Selecteer de gewenste kolommen:', options=['Alle', df1.columns])
+    # Kolommen selecteren met behulp van een multiselect widget
+    selected_columns = st.multiselect('Selecteer de gewenste kolommen:', options=['Alle'] + [col for col in df.columns])
+
+    # Als "Alle" is geselecteerd, dan worden alle kolommen gekozen
+    if 'Alle' in selected_columns:
+        selected_columns = df.columns
 
     # filter dataframe op geselecteerde kolommen
-    df_selected = df1[selected_columns].astype(str)
+    df_selected = df1[selected_columns]
 
     # converteer het gefilterde dataframe naar CSV-tekststring
     csv = df_selected.to_csv(index=False)
