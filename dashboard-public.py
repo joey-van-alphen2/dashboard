@@ -439,7 +439,7 @@ def main():
     df_selected = df1[selected_columns]
 
     # converteer het gefilterde dataframe naar CSV-tekststring
-    csv = df_selected.to_csv(index=False)
+    csv = df_selected.to_excel(index=False)
     
     st.download_button(
     label="Exporteer naar CSV",
