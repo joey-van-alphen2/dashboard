@@ -438,7 +438,7 @@ def main():
     df_selected = df1[selected_columns]
 
     # converteer het gefilterde dataframe naar CSV-tekststring
-    csv = df_selected.to_csv(index=False)
+    csv = df_selected.to_csv(index=False, float_format="%.3f")
     
     st.download_button(
     label="Exporteer naar CSV",
