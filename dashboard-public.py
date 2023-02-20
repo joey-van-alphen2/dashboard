@@ -426,11 +426,11 @@ def main():
     df1.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Warm Tap Water', 'Temperatuur', 'Verbruik_gj', 'Verbruik_m3', 'Jaar', 'Maand', 'Dag', 'Week']
     
     # Kolommen selecteren met behulp van een multiselect widget
-    selected_columns = st.multiselect('Selecteer de gewenste kolommen:', options=['Alle'] + [col for col in df.columns])
+    selected_columns = st.multiselect('Selecteer de gewenste kolommen:', options=['Alle'] + [col for col in df1.columns])
 
     # Als "Alle" is geselecteerd, dan worden alle kolommen gekozen
     if 'Alle' in selected_columns:
-        selected_columns = df.columns
+        selected_columns = df1.columns
 
     # filter dataframe op geselecteerde kolommen
     df_selected = df1[selected_columns]
