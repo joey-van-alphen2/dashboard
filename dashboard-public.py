@@ -422,11 +422,13 @@ def main():
     st.markdown("<br>", unsafe_allow_html=True)
     
     st.subheader('Data exporteren')
+    
+    df1['GJ'] = df1['GJ'].astype(str)
    
     df1.columns = ['Datum', 'Meterstand Verwarming', 'Meterstand Warm Tap Water', 'Temperatuur', 'Verbruik_gj', 'Verbruik_m3', 'Jaar', 'Maand', 'Dag', 'Week']
     
     # Kolommen selecteren met behulp van een multiselect widget
-    selected_columns = st.multiselect('Selecteer de gewenste kolommen:', options=['Alle'] + [col for col in df1.columns])
+    selected_columns = st.multiselect('Selecteer de gewenste kolommen:', options=['Alle kolommen'] + [col for col in df1.columns])
 
     # Als "Alle" is geselecteerd, dan worden alle kolommen gekozen
     if 'Alle' in selected_columns:
