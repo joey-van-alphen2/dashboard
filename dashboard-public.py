@@ -19,7 +19,17 @@ from plotly.subplots import make_subplots
 #   App Interface  
     
 def main():
-    
+ 
+    st.set_page_config(
+    page_title="Dashboard Verbruik",
+    page_icon="🛠️",
+    menu_items={
+        'Get Help': 'mailto:joey0405@hotmail.com',
+        'Report a bug': "mailto:joey0405@hotmail.com",
+        'About': "### Dashboard voor Stadsverwarming en Warm Tap Water vebruik"
+    }
+)
+  
     os.system("git config --global user.name 'joey-van-alphen2'")
     os.system("git config --global user.email 'joey.van.alphen@hva.nl'")
 
