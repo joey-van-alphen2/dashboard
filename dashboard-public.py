@@ -230,7 +230,7 @@ def main():
         months = df1["Maand"].unique()
         last_value = df1.iloc[-1]["Maand"]
         selected_month = col2.selectbox("Selecteer een maand:", months, index=len(months)-1)
-        st.markdown(f'Statistieken in {selected_month} {len(months)}')
+        st.markdown(f'Statistieken in {selected_month}')
         kpi1, kpi2, kpi3, kpi4 = st.columns(4)
         kpi1.metric(
             label="Totaal verbruik 🔥",
