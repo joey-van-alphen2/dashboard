@@ -22,7 +22,7 @@ def main():
  
     st.set_page_config(
     page_title="Dashboard Verbruik",
-    page_icon="📊",
+    page_icon="📈",
     menu_items={
         'Get Help': 'mailto:joey0405@hotmail.com',
         'Report a bug': "mailto:joey0405@hotmail.com",
