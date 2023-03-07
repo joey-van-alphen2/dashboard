@@ -247,11 +247,11 @@ def main():
         kpi4.metric(
             label="Kosten warm tap water 💰",
             value=f'€ {round((df1[df1["Maand"] == selected_month].m3.sum()*9.92), 2)}')
-        
+        len(months)
     elif time_period == "Jaar":
         years = df1["Jaar"].unique()
         last_value = df1.iloc[-1]["Jaar"]
-        selected_year = col2.selectbox("Selecteer een jaar:", years, index=1)
+        selected_year = col2.selectbox("Selecteer een jaar:", years, index=len(years)-1)
         st.markdown(f'Statistieken in {selected_year}')
         kpi1, kpi2, kpi3, kpi4 = st.columns(4)
         kpi1.metric(
