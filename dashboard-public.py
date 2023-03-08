@@ -27,21 +27,21 @@ def main():
         'Get Help': 'mailto:joey0405@hotmail.com',
         'Report a bug': "mailto:joey0405@hotmail.com",
         'About': "### Dashboard voor Stadsverwarming en Warm Tap Water vebruik"
-    }
-)
+        }
+    )
   
     os.system("git config --global user.name 'joey-van-alphen2'")
     os.system("git config --global user.email 'joey.van.alphen@hva.nl'")
 
-    st.title('Verwarming en warm tap water verbruik')
+    st.title('Verwarming en Warm Tap Water Verbruik')
     df1 = pd.read_csv('df1.csv')
     
 #   Data invullen door gebruiker
-    st.sidebar.header('Verbruik per datum')
+    st.sidebar.header('Meterstanden invullen')
     with st.sidebar.form(key='df1', clear_on_submit=True):
         add_col1 = st.date_input("Datum")
         add_col2 = st.number_input('Verwarming', min_value=df1['Verwarming'].iloc[-1], step=0.050, value=df1['Verwarming'].iloc[-1], format='%3.3f')
-        add_col3 = st.number_input('Water', min_value=df1['Water'].iloc[-1], step=0.1, value=df1['Water'].iloc[-1], format='%3.1f')
+        add_col3 = st.number_input('Warm Tap Water', min_value=df1['Water'].iloc[-1], step=0.1, value=df1['Water'].iloc[-1], format='%3.1f')
         add_col4 = st.number_input('Temperatuur', step=1.0, value=df1['Temperatuur'].iloc[-1], format='%2.1f')
         submit = st.form_submit_button('Submit')
         if submit:
