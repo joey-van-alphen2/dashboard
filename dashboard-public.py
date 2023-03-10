@@ -93,8 +93,8 @@ def main():
     import unicodedata
     degree_symbol = unicodedata.lookup("DEGREE SIGN")
     
-    if df1.Temperatuur.iloc[-1] <= 0:
-        st.snow() 
+    #if df1.Temperatuur.iloc[-1] <= 0:
+        #st.snow() 
 
 #   Kleuren
     #Eneco kleuren
@@ -385,6 +385,7 @@ def main():
     max_temperatuur_gj = df1.loc[max_index_gj, 'Temperatuur']
     
     if (df1.GJ.iloc[-1]) == (df1.GJ.max()):
+        st.snow()
         st.error('Oei, een nieuw record... Het hoogste verbruik tot nu toe:')
         
     st.markdown(f'Het record met het meeste verbruik in GJ was op {max_date_gj}')
