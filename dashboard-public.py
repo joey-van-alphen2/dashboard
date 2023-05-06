@@ -406,9 +406,14 @@ def main():
     
     st.markdown("<br>", unsafe_allow_html=True)
     
-    min_index_gj = df1['GJ'].idxmin()
+    min_index_gj = df1[::-1]['GJ'].idxmin()
     min_date_gj = df1.loc[min_index_gj, 'Datum']
     min_temperatuur_gj = df1.loc[min_index_gj, 'Temperatuur']    
+
+    
+    #min_index_gj = df1['GJ'].idxmin()
+    #min_date_gj = df1.loc[min_index_gj, 'Datum']
+    #min_temperatuur_gj = df1.loc[min_index_gj, 'Temperatuur']    
   
     if (df1.GJ.iloc[-1]) == (df1.GJ.min()):
         st.balloons()
