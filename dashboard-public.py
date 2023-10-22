@@ -68,7 +68,7 @@ def main():
     df1['Dag'] = df1.Datum.dt.strftime('%A')
     df1['Week'] = df1.Datum.dt.strftime('%U')
 #   2023 meting manipuleren
-    df1['Jaar'] = np.where((df1['Jaar']==2023)&(df1['Week']==52), 2022, df1['Jaar'])
+    #df1['Jaar'] = np.where((df1['Jaar']==2023)&(df1['Week']==52), 2022, df1['Jaar'])
 #   Omzetten naar dataframe
     df_week_show = df1.tail(7)
     df_week_show['Datum'] = pd.to_datetime(df_week_show['Datum'], format='%Y-%m-%d').dt.strftime('%d-%m-%Y')
